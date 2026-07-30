@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Layer Visualizer Pro | User Guide</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .guide-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .guide-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .guide-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .guide-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .guide-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+        }
+        .guide-section h2 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .guide-section p, .guide-section li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .guide-section ul, .guide-section ol {
+            margin-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .guide-section li strong {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            🌐 OSI <span>Visualizer</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="about.html">About OSI</a>
+            <a href="guide.html" class="active">User Guide</a>
+        </nav>
+        <div class="nav-action">
+            <a href="simulator.html" class="btn-glow">Launch Simulator 🚀</a>
+        </div>
+    </header>
+
+    <!-- Guide Content Section -->
+    <main class="guide-container">
+        <div class="guide-header">
+            <div class="badge-pill">💡 Interactive Documentation</div>
+            <h1>How to Use the OSI Simulator</h1>
+            <p>Learn how to operate the dual-PC network simulation, track live packet encapsulation, and explore network layers in real time.</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>🚀 Step 1: Launching a Simulation</h2>
+            <p>To start observing how data travels across a network:</p>
+            <ol>
+                <li>Navigate to the <strong>Simulator</strong> page from the top menu.</li>
+                <li>Locate the <strong>Source PC</strong> panel on the left side of your screen.</li>
+                <li>Type any custom message or payload data into the input box (e.g., <code>Hello Secure Network!</code>).</li>
+                <li>Click the <strong>Send 🚀</strong> button to initiate transmission.</li>
+            </ol>
+        </div>
+
+        <div class="guide-section">
+            <h2>📦 Step 2: Understanding Encapsulation (L7 ➔ L1)</h2>
+            <p>As soon as you click Send, the Source PC processes your message downwards from Layer 7 to Layer 1:</p>
+            <ul>
+                <li><strong>Layer 7 to 5 (Application, Presentation, Session):</strong> Formats the user data, handles encryption/TLS, and establishes session tokens. PDU: <em>Data</em>.</li>
+                <li><strong>Layer 4 (Transport):</strong> Wraps data into <strong>Segments</strong> (TCP/UDP) and appends source/destination port numbers.</li>
+                <li><strong>Layer 3 (Network):</strong> Encapsulates segments into <strong>Packets</strong> by adding Source & Destination IP addresses (e.g., 192.168.1.10 ➔ 192.168.1.50).</li>
+                <li><strong>Layer 2 (Data Link):</strong> Wraps packets into <strong>Frames</strong> by adding MAC addresses and error checksum trailers.</li>
+                <li><strong>Layer 1 (Physical):</strong> Converts the final frame into raw <strong>Bits</strong> (0s and 1s) ready for physical transmission.</li>
+            </ul>
+        </div>
+
+        <div class="guide-section">
+            <h2>⚡ Step 3: Transmission & Decapsulation (L1 ➔ L7)</h2>
+            <p>Once bits cross the physical transmission medium hub:</p>
+            <ul>
+                <li>The <strong>Destination PC</strong> receives the raw bits at Layer 1 and begins <strong>Decapsulation</strong> upwards from Layer 1 to Layer 7.</li>
+                <li>At each layer, headers and trailers are stripped and verified.</li>
+                <li>Finally, the original message is successfully delivered and rendered on the <strong>Destination PC</strong> output display!</li>
+            </ul>
+        </div>
+
+        <div class="guide-section">
+            <h2>🔍 Extra Features</h2>
+            <ul>
+                <li><strong>Inspect Any Layer:</strong> Click on any layer card in the Source or Destination stacks at any time to open a detailed modal containing protocol specifications, ports, and working methods.</li>
+                <li><strong>Pause & Reset:</strong> Use the control buttons in the central transmission hub to pause the simulation mid-way or reset it completely.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 OSI Layer Visualizer Pro. Built for Network Engineers & Students.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

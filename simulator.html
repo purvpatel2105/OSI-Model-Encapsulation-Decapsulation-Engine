@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Layer Visualizer Pro | Simulator Workspace</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simulator.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            🌐 OSI <span>Visualizer</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="simulator.html" class="active">Simulator</a>
+            <a href="about.html">About OSI</a>
+            <a href="guide.html">User Guide</a>
+        </nav>
+        <div class="nav-action">
+            <div class="status-indicator">
+                <span class="status-dot online"></span> System Online
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Simulator Workspace -->
+    <main class="simulator-container">
+        
+        <!-- Left PC: Source Sender -->
+        <section class="pc-panel source-pc">
+            <div class="pc-header">
+                <div class="pc-title-group">
+                    <span class="pc-icon">💻</span>
+                    <div>
+                        <h2>Source PC</h2>
+                        <span class="ip-tag">192.168.1.10 (Sender)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-card">
+                <label for="userMessage">Payload Data / Message:</label>
+                <div class="input-group">
+                    <input type="text" id="userMessage" value="Hello Secure Network!" placeholder="Enter message...">
+                    <button id="startBtn" class="btn-primary">Send 🚀</button>
+                </div>
+            </div>
+
+            <div class="stack-wrapper">
+                <h3>Encapsulation Stack (L7 ➔ L1)</h3>
+                <div class="stack-container" id="sourceStack">
+                    <!-- Layer cards populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Center: Transmission Hub & Real-Time Inspector -->
+        <section class="transmission-hub">
+            <div class="hub-header">
+                <h3>🌐 Transmission Medium</h3>
+                <p>Physical Channel (Ethernet / Fiber)</p>
+            </div>
+
+            <!-- Flying Packet Visual Element -->
+            <div class="channel-track">
+                <div id="flyingPacket" class="packet-capsule hidden">
+                    📦 <span id="packetLabel">Bits</span>
+                </div>
+            </div>
+
+            <!-- Real-Time Packet Inspector -->
+            <div class="inspector-box-container">
+                <div class="inspector-header">
+                    <h4>🔍 Live Packet Inspector</h4>
+                    <span id="activePhaseBadge" class="phase-badge">Idle</span>
+                </div>
+                <div id="inspectorContent" class="inspector-content">
+                    <p class="placeholder-text">Click "Send" on the Source PC to begin layer-by-layer encapsulation and transmission...</p>
+                </div>
+            </div>
+
+            <!-- Simulation Controls -->
+            <div class="sim-controls">
+                <button id="pauseBtn" class="btn-control" disabled>Pause ⏸</button>
+                <button id="resetBtn" class="btn-control accent">Reset 🔄</button>
+            </div>
+        </section>
+
+        <!-- Right PC: Destination Receiver -->
+        <section class="pc-panel dest-pc">
+            <div class="pc-header">
+                <div class="pc-title-group">
+                    <span class="pc-icon">🖥️</span>
+                    <div>
+                        <h2>Destination PC</h2>
+                        <span class="ip-tag">192.168.1.50 (Receiver)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-card">
+                <label>Received Application Data:</label>
+                <div id="receivedOutput" class="output-display">Waiting for transmission...</div>
+            </div>
+
+            <div class="stack-wrapper">
+                <h3>Decapsulation Stack (L1 ➔ L7)</h3>
+                <div class="stack-container" id="destStack">
+                    <!-- Layer cards populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Layer Details Modal (Populated dynamically on layer click) -->
+    <div id="layerModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2 id="modalLayerTitle">Layer Details</h2>
+            <div class="modal-body" id="modalLayerBody">
+                <!-- Details injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/layers.js"></script>
+    <script src="js/packet.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/simulator.js"></script>
+</body>
+</html>

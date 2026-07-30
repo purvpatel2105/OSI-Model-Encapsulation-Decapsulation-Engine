@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Layer Visualizer Pro | About OSI Model</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .about-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .about-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .about-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .layers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .layer-info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .layer-info-card:hover {
+            border-color: var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+        }
+        .layer-badge-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .layer-info-card h3 {
+            color: var(--accent-glow);
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .layer-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .meta-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-family: monospace;
+        }
+        @media screen and (max-width: 768px) {
+            .layer-info-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🌐 OSI <span>Visualizer</span></div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="about.html" class="active">About OSI</a>
+            <a href="guide.html">User Guide</a>
+        </nav>
+        <div class="nav-action">
+            <a href="simulator.html" class="btn-glow">Launch Simulator 🚀</a>
+        </div>
+    </header>
+
+    <main class="about-container">
+        <div class="about-header">
+            <div class="badge-pill">📖 Comprehensive Architecture Guide</div>
+            <h1>Deep Dive into the 7 Layers of the OSI Model</h1>
+            <p>The Open Systems Interconnection (OSI) model standardizes how data communicates across networks by breaking the process down into 7 logical layers—from user software down to physical cables.</p>
+        </div>
+
+        <div class="layers-grid">
+            <!-- Layer 7 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 7</span>
+                    <h3>Application Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Serves as the direct interface between user applications (like web browsers or mail clients) and the underlying network services. It identifies communication partners and resource availability.</p>
+                    <p><strong>Working Method:</strong> When you send a message, this layer formats your input data and prepares it for transmission. At the receiving end, it translates data into a readable format for the software.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: HTTP, HTTPS, FTP, DNS, SMTP</span>
+                        <span class="meta-tag">PDU: Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 6 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 6</span>
+                    <h3>Presentation Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Acts as the "translator" of the network. It ensures that data sent from the application layer of one system can be easily understood by the application layer of another system.</p>
+                    <p><strong>Working Method:</strong> Handles data encryption/decryption (such as SSL/TLS security handshakes), data compression to speed up transfer, and syntax formatting (like JPEG, GIF, or ASCII translation).</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: SSL/TLS, JPEG, MPEG, ASCII</span>
+                        <span class="meta-tag">PDU: Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 5 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 5</span>
+                    <h3>Session Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Manages and maintains conversations (sessions) between local and remote applications. It handles opening, closing, and re-establishing connections.</p>
+                    <p><strong>Working Method:</strong> Sets up checkpoint synchronization so that if a connection drops, data is not lost entirely; it resumes from the last known checkpoint.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: NetBIOS, RPC, PPTP, SAP</span>
+                        <span class="meta-tag">PDU: Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 4 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 4</span>
+                    <h3>Transport Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Ensures complete, reliable, or lightning-fast end-to-end data delivery between hosts. It breaks large messages down into manageable chunks and manages flow control.</p>
+                    <p><strong>Working Method:</strong> Uses TCP (connection-oriented, reliable delivery with acknowledgments) or UDP (connectionless, fast streaming without guarantees) and assigns port numbers.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: TCP, UDP, SCTP</span>
+                        <span class="meta-tag">PDU: Segment (TCP) / Datagram (UDP)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 3 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 3</span>
+                    <h3>Network Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Handles logical addressing (IP addresses) and determines the best physical routing path across multiple interconnected networks (routers).</p>
+                    <p><strong>Working Method:</strong> Encapsulates transport segments into Packets by attaching Source IP and Destination IP addresses so data knows exactly which device it needs to reach across the internet.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: IPv4, IPv6, ICMP, IPsec, OSPF</span>
+                        <span class="meta-tag">PDU: Packet</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 2 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 2</span>
+                    <h3>Data Link Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> Facilitates node-to-node data transfer between neighboring devices on the same local network (LAN) and detects errors from physical media.</p>
+                    <p><strong>Working Method:</strong> Wraps network packets into Frames by attaching Physical MAC addresses (Source MAC & Destination MAC) and adds a Frame Check Sequence (FCS) error-detection trailer.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Protocols: Ethernet, Wi-Fi (802.11), ARP, PPP</span>
+                        <span class="meta-tag">PDU: Frame</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 1 -->
+            <div class="layer-info-card">
+                <div class="layer-badge-box">
+                    <span class="badge" style="width: fit-content; font-size: 0.9rem; padding: 4px 10px;">Layer 1</span>
+                    <h3>Physical Layer</h3>
+                </div>
+                <div class="layer-details">
+                    <p><strong>What it does:</strong> The absolute bottom foundation of networking. It manages the transmission of raw unstructured bits (0s and 1s) across physical hardware media.</p>
+                    <p><strong>Working Method:</strong> Converts frames into actual physical signals—such as electrical voltage levels over copper CAT6 cables, light pulses through fiber optics, or radio frequency waves over Wi-Fi.</p>
+                    <div class="meta-tags">
+                        <span class="meta-tag">Media: CAT6 Cables, Fiber Optics, Radio Waves</span>
+                        <span class="meta-tag">PDU: Bits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 OSI Layer Visualizer Pro. Built for Network Engineers & Students.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

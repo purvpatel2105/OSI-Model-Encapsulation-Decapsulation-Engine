@@ -1,0 +1,99 @@
+/* ==========================================
+   OSI Layer Visualizer - Animation Styles
+   ================================---------- */
+
+/* Active Layer Glowing Pulse */
+@keyframes layerPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(56, 189, 248, 0.2);
+        border-color: var(--border-color);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        border-color: var(--accent-glow);
+        background: rgba(56, 189, 248, 0.15);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        border-color: var(--accent-glow);
+        background: rgba(56, 189, 248, 0.1);
+    }
+}
+
+.layer-card.active {
+    animation: layerPulse 1.2s infinite ease-in-out;
+}
+
+/* Flying Packet Animation across the channel */
+@keyframes packetTravel {
+    0% {
+        left: 5%;
+        transform: translateY(-50%) scale(0.9);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        left: 85%;
+        transform: translateY(-50%) scale(1);
+        opacity: 0;
+    }
+}
+
+.packet-capsule.animate-flight {
+    animation: packetTravel 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Modal Fade-In Effect */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal:not(.hidden) .modal-content {
+    animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Inspector Log Item Appearance */
+@keyframes logSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.inspector-content > div, 
+.inspector-content > p {
+    animation: logSlideIn 0.25s ease-out forwards;
+}
+
+/* Status Indicator Pulse (Online Dot) */
+@keyframes dotPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+.status-dot.online {
+    animation: dotPulse 2s infinite;
+}

@@ -1,0 +1,429 @@
+/* ==========================================
+   Simulator Layout & Workspace Grid
+   ================================---------- */
+.simulator-container {
+    display: grid;
+    grid-template-columns: 1fr 380px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 2.5rem;
+    height: calc(100vh - 75px);
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+/* PC Panels (Source & Destination) */
+.pc-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.pc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pc-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pc-icon {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.pc-title-group h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.ip-tag {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--accent-glow);
+    background: rgba(56, 189, 248, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Input & Output Cards */
+.input-card, .output-card {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.input-card label, .output-card label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.input-group input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-group input:focus {
+    border-color: var(--accent-glow);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.output-display {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--success-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Stack Container & Layer Cards */
+.stack-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.stack-wrapper h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.stack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.layer-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.layer-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-muted);
+}
+
+.layer-card.active {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent-glow);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    transform: scale(1.01);
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   Transmission Hub (Center Panel)
+   ================================---------- */
+.transmission-hub {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.hub-header {
+    text-align: center;
+}
+
+.hub-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.hub-header p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.channel-track {
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.packet-capsule {
+    position: absolute;
+    background: #0f172a;
+    border: 1px solid var(--accent-glow);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-glow);
+    box-shadow: 0 0 12px var(--accent-glow);
+    transition: left 0.5s ease-in-out;
+}
+
+.packet-capsule.hidden {
+    display: none;
+}
+
+/* Real-Time Inspector Box */
+.inspector-box-container {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 1rem 0;
+    max-height: 320px;
+}
+
+.inspector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+}
+
+.inspector-header h4 {
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.phase-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning-color);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.inspector-content {
+    flex: 1;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--accent-glow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 4px;
+}
+
+.inspector-content::-webkit-scrollbar {
+    width: 4px;
+}
+.inspector-content::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.placeholder-text {
+    color: var(--text-muted);
+    font-style: italic;
+    font-family: var(--font-main);
+    text-align: center;
+    margin: auto;
+}
+
+/* Simulation Controls */
+.sim-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.btn-control {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-control:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--text-muted);
+}
+
+.btn-control:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-control.accent {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.btn-control.accent:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* ==========================================
+   Layer Details Modal Styling
+   ================================---------- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 13, 22, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: var(--transition);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #0f172a;
+    border: 1px solid var(--border-glow);
+    width: 90%;
+    max-width: 550px;
+    padding: 2rem;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+#modalLayerTitle {
+    color: var(--accent-glow);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.modal-body p {
+    line-height: 1.5;
+}
+
+.modal-body ul {
+    margin-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modal-body li strong {
+    color: var(--text-main);
+}
+
+/* System Online Dot Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.online {
+    background: var(--success-color);
+    box-shadow: 0 0 8px var(--success-color);
+}
