@@ -1,9 +1,9 @@
 🌐 Working of OSI Layer (OSI Layer Visualizer Pro)
 
-💻 Local Installation & Setup
+💻 Local Installation & Setup : https://purvpatel2105.github.io/OSI-Model-Encapsulation-Decapsulation-Engine/
 
 
- git clone [ https://purvpatel2105.github.io/OSI-Model-Encapsulation-Decapsulation-Engine/)
+
 
 "Working of OSI Layer" is an advanced, interactive web-based network simulation engine engineered to demonstrate the end-to-end traversal of data across a computer network via the 7-layer OSI (Open Systems Interconnection) reference model. It provides a real-time, visual architectural breakdown of communication between a Source node and a Destination node.
 
